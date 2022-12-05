@@ -1,0 +1,46 @@
+drop database solicitacoes;
+
+create database solicitacoes;
+
+use solicitacoes;
+
+create table cliente (
+    cliente_id	bigint auto_increment primary key,
+    nome  		varchar(255) 	null,
+	email 		varchar(255) 	null,
+    telefone	bigint		null
+);
+
+create table exame (
+    exame_id	bigint auto_increment primary key,
+    tipo		varchar(255) null,
+    nome  		varchar(255) null,
+    valor 		double       null
+);
+
+create table solicitacao (
+    solicitacao_id	bigint auto_increment primary key,
+    status			varchar(255) null,
+    medico			varchar(255) null,
+    prestador		varchar(255) null,
+    cliente_id 		bigint       null,
+    exame_id 		bigint       null,
+    constraint FK_COMPRA_EXAME	 foreign key (exame_id)		references exame (exame_id),
+    constraint FK_COMPRA_CLIENTE foreign key (cliente_id)	references cliente (cliente_id)
+);
+
+INSERT INTO cliente (cliente_id, nome, email, telefone) VALUES (1, 'Laís Isabelly Rocha', 'lais-rocha77@recatec.com.br', 81996611214);
+INSERT INTO cliente (cliente_id, nome, email, telefone) VALUES (2, 'César Renan Bernardo Fogaça', 'cesarrenanfogaca@itau-unibanco.com.br', 81997371397);
+INSERT INTO cliente (cliente_id, nome, email, telefone) VALUES (3, 'Gabrielly Natália Marlene da Conceição', 'gabrielly.natalia.daconceicao@torrez.com.br', 81989892164);
+INSERT INTO cliente (cliente_id, nome, email, telefone) VALUES (4, 'Mário José Juan Peixoto', 'mario-peixoto91@brf-br.com', 81982311551);
+INSERT INTO cliente (cliente_id, nome, email, telefone) VALUES (5, 'Andrea Bianca Luiza Castro', 'andrea.bianca.castro@libbero.com.br', 81999598468);
+
+INSERT INTO exame (exame_id, tipo, nome, valor) VALUES (1, 'Exame Geral', 'ELETROCARDIOGRAMA', 80);
+INSERT INTO exame (exame_id, tipo, nome, valor) VALUES (2, 'Exame de Sangue', 'ACIDO FÓLICO', 15);
+INSERT INTO exame (exame_id, tipo, nome, valor) VALUES (3, 'Exame de Imagem', 'DENSITOMETRIA ÓSSEA', 120);
+INSERT INTO exame (exame_id, tipo, nome, valor) VALUES (4, 'Exame de Sangue', 'GLICOSE', 20);
+INSERT INTO exame (exame_id, tipo, nome, valor) VALUES (5, 'Exame Geral', 'MAPA', 30);
+
+select * from cliente;
+#select * from exame;
+#select * from solicitacao;

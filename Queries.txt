@@ -1,0 +1,50 @@
+mutation {
+  saveSolicitacao(status:"Pago",medico:"Julio Cauã Iago Porto",prestador:"Alessandra Louise Fabiana Rodrigues",cliente:5,exame:1) {
+    solicitacao_id
+  }
+}
+
+query {
+  solicitacao(id:1) {
+    solicitacao_id
+    medico
+    prestador
+    cliente {
+      nome
+    }    
+    exame {
+      tipo
+      nome
+      valor
+    }
+  }
+}
+
+query {
+  clientes {
+    cliente_id
+    nome
+    email
+    telefone
+  }
+  exames {
+    exame_id
+    tipo
+    nome
+    valor
+  }
+  solicitacoes {
+    solicitacao_id
+    status
+    medico
+    prestador
+    cliente {
+      nome
+    }
+    exame {
+      tipo
+      nome
+      valor
+    }
+  }
+}

@@ -1,0 +1,47 @@
+type Cliente {
+    cliente_id:ID,
+    nome:String,
+    email:String,
+    telefone:Float
+}
+
+type Exame {
+    exame_id:ID,
+    tipo:String,
+    nome:String,
+    valor:Float
+}
+
+type Solicitacao {
+    solicitacao_id:ID,
+    status:String,
+    medico:String,
+    prestador:String,
+    cliente:Cliente,
+    exame:Exame
+}
+
+type Query {
+    clientes:[Cliente]
+
+    exames:[Exame]
+
+    solicitacoes:[Solicitacao]
+    
+    solicitacao(id:ID):Solicitacao
+
+}
+
+type Mutation {
+    saveCliente(cliente_id:ID, nome:String, email:ID, telefone:Float): Cliente
+
+    deleteCliente(cliente_id:ID): Boolean
+
+    saveExame(exame_id:ID, tipo: String, nome:String, valor:Float): Exame
+
+    deleteExame(exame_id:ID): Boolean
+
+    saveSolicitacao(solicitacao_id:ID, status:String, medico: String, prestador:String, cliente:ID, exame:ID): Solicitacao
+
+    deleteSolicitacao(solicitacao_id:ID): Boolean
+}
