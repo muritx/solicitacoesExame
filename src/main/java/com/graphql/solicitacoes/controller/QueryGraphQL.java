@@ -104,8 +104,8 @@ public class QueryGraphQL implements GraphQLQueryResolver, GraphQLMutationResolv
 
     @Transactional
     public Boolean deleteSolicitacao(Long solicitacao_id) {
-        if(exameRep.findById(solicitacao_id).isPresent()) {
-            exameRep.deleteById(solicitacao_id);
+        if(solicitacaoRep.findById(solicitacao_id).isPresent()) {
+            solicitacaoRep.deleteById(solicitacao_id);
             return true;
         }
         return false;
